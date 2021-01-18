@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RProcess", "RProcess\RProcess.vcxproj", "{C013FC88-6C11-4825-B445-C74A8F15F02C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RProcessDriver", "RProcess\RProcess.vcxproj", "{C013FC88-6C11-4825-B445-C74A8F15F02C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RProcessTest", "RProcessTest\RProcessTest.vcxproj", "{0024A28C-A147-49D1-844D-BCA82DF571CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{C013FC88-6C11-4825-B445-C74A8F15F02C}.Debug|Win32.Build.0 = Debug|Win32
 		{C013FC88-6C11-4825-B445-C74A8F15F02C}.Release|Win32.ActiveCfg = Release|Win32
 		{C013FC88-6C11-4825-B445-C74A8F15F02C}.Release|Win32.Build.0 = Release|Win32
+		{0024A28C-A147-49D1-844D-BCA82DF571CD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0024A28C-A147-49D1-844D-BCA82DF571CD}.Debug|Win32.Build.0 = Debug|Win32
+		{0024A28C-A147-49D1-844D-BCA82DF571CD}.Release|Win32.ActiveCfg = Release|Win32
+		{0024A28C-A147-49D1-844D-BCA82DF571CD}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
