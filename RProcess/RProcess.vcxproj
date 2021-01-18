@@ -45,7 +45,7 @@
     <LibraryPath>C:\WinDDK\7600.16385.1\lib\win7\i386;$(LibraryPath)</LibraryPath>
     <TargetExt>.sys</TargetExt>
     <GenerateManifest>true</GenerateManifest>
-    <OutDir>..\</OutDir>
+    <OutDir>..\driver</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
