@@ -1,4 +1,4 @@
-#include <ntifs.h>
+/*#include <ntifs.h>
 #define IOCTL_BASE 0x800
 #define MY_CTL_CODE(code)       \
 		CTL_CODE( \
@@ -153,4 +153,25 @@ NTSTATUS DeviceCtrl(DEVICE_OBJECT* device, IRP* irp)
 		IoCompleteRequest(irp, IO_NO_INCREMENT);
 		return status;
 	}
+}*/
+
+
+
+
+
+
+
+#define _WIN64 1
+#define _AMD64_ 1
+#include "ntddk.h"
+
+NTSTATUS 
+DriverEntry(PDRIVER_OBJECT DriverObject,PUNICODE_STRING RegistryPath) 
+{ 
+return STATUS_UNSUCCESSFUL; 
 }
+
+
+
+
+

@@ -44,7 +44,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	//打开该驱动
 	HANDLE hSys = CreateFile(
-		L"..\\driver\\RProcessDriver.sys",
+		L"\\\\??\\rdriver",
 		GENERIC_ALL,
 		FILE_SHARE_READ,
 		NULL,
